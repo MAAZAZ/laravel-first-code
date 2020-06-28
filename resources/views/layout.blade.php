@@ -7,9 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+    @if (session()->has('status'))
+            <h3 style="color: rgb(48, 0, 241)">
+                {{ session()->get('status') }}
+            </h3> 
+    @endif
+
     @yield('content')
 
-    
 </body>
 </html>

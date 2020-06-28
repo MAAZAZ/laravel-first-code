@@ -1,0 +1,12 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    //protected $table = 'mypost';
+    protected $fillable=['title','content','slug','active'];
+
+}

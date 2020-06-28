@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -43,3 +45,5 @@ Route::get('/test2/{id}/{id2?}', function ($id,$id2='<a href="#">hheelo</a>') {
 Route::namespace('Front')->group(function (){
    Route::get('users','UsersController@showUserName');
 });
+
+Route::resource('/posts','PostController')->except('destroy');
