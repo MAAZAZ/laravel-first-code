@@ -12,6 +12,14 @@
             @else
                 <p>Disabled</p>
             @endif
+            <form action="{{ route('posts.edit', [ 'post'=>$item->id])}}" method="GET">
+                 <button type="submit">Edit</button>
+            </form>
+            <form action="{{ route('posts.destroy', [ 'id'=>$item->id])}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button type="submit">Delete</button>
+            </form>
         </li>
         @empty
             <p>Not post yet!</p>
