@@ -91,7 +91,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', 
+            [ 'post' => $post ]);
     }
 
     /**
@@ -101,9 +103,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePost $request, $id)
     {
-        //
+        $Myroutes = Post::findOrFail($id);
+        $Myroutes->title = $request->input('title');
+        $Myroutes->content = $request->input('content');
+        $Myroutes->save();
+
+        $request->session()->flash('status', 'Post was updated');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -114,6 +122,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect()->route('posts.index');
+
     }
 }

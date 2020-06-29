@@ -46,4 +46,4 @@ Route::namespace('Front')->group(function (){
    Route::get('users','UsersController@showUserName');
 });
 
-Route::resource('/posts','PostController')->except('destroy');
+Route::resource('/posts','PostController');
