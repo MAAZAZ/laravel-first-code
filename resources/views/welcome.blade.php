@@ -86,7 +86,7 @@
 
                 <div class="links">
                     <a href="{{route('b',6)}}">Docs</a>
-                    <a href="{{route('a',5)}}">Laracasts</a>
+                    <a href="{{route('a',[5,"zakaria"])}}">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
