@@ -9,4 +9,8 @@ class Post extends Model
     //protected $table = 'mypost';
     protected $fillable=['title','content','slug','active'];
 
+    public function comment(){
+        return $this->hasMany('App\Comment');
+    }
+
 }
