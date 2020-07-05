@@ -12,6 +12,14 @@
             @else
                 <p>Disabled</p>
             @endif
+
+            @if ($item->comment_count>1)
+                <span class="badge badge-success">{{ $item->comment_count }} Comments</span>
+            @elseif($item->comment_count==1)
+                <span class="badge badge-success">{{ $item->comment_count }} Comment</span>
+            @else
+                <span class="badge badge-info">No Comments</span>
+            @endif  
             <div class="row float-right">
             <div class="col-4">
             <form action="{{ route('posts.edit', [ 'post'=>$item->id])}}" method="GET">
