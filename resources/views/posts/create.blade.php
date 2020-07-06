@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
     <h1>list of frameworks to learn</h1>
 <form action="{{route('posts.store')}}" method="POST">

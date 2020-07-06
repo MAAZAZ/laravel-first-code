@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -47,3 +48,7 @@ Route::namespace('Front')->group(function (){
 });
 
 Route::resource('/posts','PostController');
+Auth::routes();
+
+Route::get('/home', 'PostController@index')->name('home');
+Auth::routes();

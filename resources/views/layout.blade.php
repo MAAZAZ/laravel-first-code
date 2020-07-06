@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}" >
     <link rel="stylesheet" href="{{ mix('/css/theme.css') }}" >
-    <title>Document</title>
+    <title>Post</title>
 </head>
 <body>
 
