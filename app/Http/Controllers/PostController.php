@@ -21,12 +21,35 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function archive()
+    {
+        $post = Post::onlyTrashed()->withCount('comment')->get();
+        return view(
+            'posts.index',
+            [
+                'posts' => $post, 'type' => 'archive'
+            ]
+        );
+    }
+
+    public function all()
+    {
+        $post = Post::withTrashed()->withCount('comment')->get();
+        return view(
+            'posts.index',
+            [
+                'posts' => $post, 'type' => 'all'
+            ]
+        );
+    }
+
     public function index()
     {
 
         //DB::enableQueryLog();
 
-        $post=Post::withCount('comment')->get();
+        $post=Post::withCount('comment')->orderBy('id','asc')->get();
 
        // foreach($post as $p){
          //   foreach($p->comment as $c){
@@ -40,7 +63,7 @@ class PostController extends Controller
         //dd(\App\Post::all());
         return view('posts.index',
         [
-            'posts' => $post
+            'posts' => $post, 'type' => 'list'
         ]
     );
     }
@@ -147,5 +170,20 @@ class PostController extends Controller
         Post::destroy($id);
         return redirect()->route('posts.index');
 
+    }
+
+    public function restore($id){
+        
+        $post = Post::onlyTrashed()->where('id',$id)->first();
+        //dd($id);
+        $post->restore();
+        return redirect()->back();
+    }
+
+
+    public function forcedelete($id){
+        $post = Post::onlyTrashed()->where('id', $id)->first();
+        $post->forceDelete();
+        return redirect()->back();
     }
 }

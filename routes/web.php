@@ -47,7 +47,13 @@ Route::namespace('Front')->group(function (){
    Route::get('users','UsersController@showUserName');
 });
 
+Route::patch('/posts/{id}/restore', 'PostController@restore');
+Route::delete('/posts/{id}/forcedelete', 'PostController@forcedelete');
+Route::get('/posts/all', 'PostController@all');
+Route::get('/posts/archive', 'PostController@archive');
+
 Route::resource('/posts','PostController');
+
 Auth::routes();
 
 Route::get('/home', 'PostController@index')->name('home');
